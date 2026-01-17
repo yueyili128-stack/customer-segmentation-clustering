@@ -1,0 +1,10 @@
+
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+
+def load_and_preprocess(path: str):
+    df = pd.read_csv(path)
+    features = df.drop(columns=["customer_id"])
+    scaler = StandardScaler()
+    scaled_features = scaler.fit_transform(features)
+    return scaled_features, df
